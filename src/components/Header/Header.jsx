@@ -28,7 +28,7 @@ const Header = () => {
   );
   return (
     <>
-      <div className="navbar bg-gray-500 p-4 text-white rounded-md mb-10">
+      <div className="navbar  p-4  rounded-md mb-10">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,7 +54,7 @@ const Header = () => {
               {menu}
             </ul>
           </div>
-          <a className="btn btn-ghost uppercase text-xl">daisyUI</a>
+          <a className="btn btn-ghost uppercase font-bold text-xl">daisyUI</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{menu}</ul>
