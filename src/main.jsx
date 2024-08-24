@@ -7,6 +7,7 @@ import Main from './LayOut/Main';
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import GithubPage from './components/GithubPage/GithubPage';
+import Registration from './components/Registration/Registration';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/github',
         element: <GithubPage></GithubPage>
+      },
+      {
+        path: '/register',
+        element: <Registration></Registration>
       }
     ]
   },

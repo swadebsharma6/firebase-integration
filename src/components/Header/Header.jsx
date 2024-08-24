@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Google from "../Login/Google";
 
-
 const Header = () => {
   const menu = (
     <>
@@ -23,6 +22,16 @@ const Header = () => {
           }
         >
           Login
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/register"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+         Register
         </NavLink>
       </li>
       <li>
@@ -71,7 +80,7 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{menu}</ul>
         </div>
         <div className="navbar-end">
-         <Google></Google>
+        <Google></Google>
         </div>
       </div>
     </>

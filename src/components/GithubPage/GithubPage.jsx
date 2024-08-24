@@ -1,16 +1,14 @@
 import {
-  getAuth,
   GithubAuthProvider,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import app from "../../Firebase/firebase.config";
 import { useState } from "react";
+import auth from './../../Firebase/firebase.config';
 
 const GithubPage = () => {
   const [user, setUser] = useState({});
 
-  const auth = getAuth(app);
   const provider = new GithubAuthProvider();
 
   const handleGithubLogin = () => {
