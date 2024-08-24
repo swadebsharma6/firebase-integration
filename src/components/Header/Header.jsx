@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Google from "../Login/Google";
 
+
 const Header = () => {
   const menu = (
     <>
@@ -22,6 +23,16 @@ const Header = () => {
           }
         >
           Login
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/github"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          GithubPage
         </NavLink>
       </li>
     </>
