@@ -1,6 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import auth from "../../Firebase/firebase.config";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Registration = () => {
 
@@ -11,9 +12,10 @@ const Registration = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    console.log(name, email, password);
 
     if(password.length < 6){
       setRegError('Password must be 6 character or Longer');
@@ -23,9 +25,7 @@ const Registration = () => {
       setRegError("Should be One UpperCase Latter");
       return;
     }
-
     // Reset 
-
     setRegError('');
     setSuccess('');
 
@@ -36,6 +36,22 @@ const Registration = () => {
         console.log(user);
         setSuccess('User created Successfully')
         form.reset();
+        // Update Profile
+        updateProfile(user, {
+          displayName: name
+        })
+        .then(()=>{
+          alert("Profile Updated")
+        })
+        .catch(error =>{
+          setRegError(error.message)
+        })
+
+        // Send verification
+        sendEmailVerification(user)
+        .then(() => {
+          alert('Please check your Email and verification')
+        })
       })
       .catch((error) => {
         const err = error.message;
@@ -43,6 +59,8 @@ const Registration = () => {
         console.log(err);
       });
   };
+
+
 
   return (
     <div>
@@ -53,6 +71,18 @@ const Registration = () => {
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <form onSubmit={handleRegister} className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -77,11 +107,6 @@ const Registration = () => {
                   required
                 />
                 <span className="cursor-pointer font-bold text-primary" onClick={()=> setShowPass(!showPass)}>Show</span>
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
               </div>
               <div className="form-control mt-6">
                 <input
@@ -97,6 +122,7 @@ const Registration = () => {
                 success && <p className=" text-primary font-bold">{success}</p>
               }
             </form>
+            <p className="text-sm text-center pb-6 font-bold">Already have an account, Please <Link className="text-primary" to='/login'>Login</Link></p>
           </div>
         </div>
       </div>
