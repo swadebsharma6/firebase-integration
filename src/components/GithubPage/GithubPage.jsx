@@ -42,6 +42,9 @@ const GithubPage = () => {
       <h3 className="text-2xl font-bold text-primary my-6">
         User Name: {user?.displayName}
       </h3>
+      <div className="flex justify-center">
+        <img className=" rounded-full w-20 mb-10" src={user?.photoURL} alt="" />
+      </div>
 
       <div>
         {user ? (

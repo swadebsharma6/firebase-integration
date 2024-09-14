@@ -52,7 +52,10 @@ const Home = () => {
           Google Sign in
         </button>
       )}
+      
+      <div className="flex items-center justify-center">
       <img src={user?.photoURL} alt="" />
+      </div>
       <h2 className="text-3xl font-bold">User Name: {user?.displayName}</h2>
       <p>Email: {user?.email}</p>
     </div>

@@ -16,6 +16,16 @@ const Header = () => {
       </li>
       <li>
         <NavLink
+          to="/github"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "active" : ""
+          }
+        >
+          GithubPage
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
           to="/login"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "active" : ""
@@ -34,16 +44,7 @@ const Header = () => {
          Register
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/github"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
-          }
-        >
-          GithubPage
-        </NavLink>
-      </li>
+     
     </>
   );
   return (
